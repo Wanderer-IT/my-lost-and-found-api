@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lost & Found</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Lost &amp; Found</h1>
+    <span>Item tracking system</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('browse')">Browse items</button>
+    <button class="tab" onclick="switchTab('report')">Report item</button>
+  </div>
+
+  <div id="tab-browse" class="section active">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Total items</div>
+        <div class="stat-val" id="stat-total">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Lost</div>
+        <div class="stat-val red" id="stat-lost">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Found</div>
+        <div class="stat-val green" id="stat-found">—</div>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search items..." oninput="handleSearch(this.value)" />
+      <button class="btn-refresh" onclick="loadItems()">&#8635; Refresh</button>
+    </div>
+
+    <div id="items-list">
+      <div class="loading">Loading items...</div>
+    </div>
+  </div>
+
+  <div id="tab-report" class="section">
+    <div class="form-card">
+      <h2>Report a lost or found item</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Item name *</label>
+          <input type="text" id="f-item" placeholder="e.g. Black wallet" />
+        </div>
+        <div class="form-group">
+          <label>Location *</label>
+          <input type="text" id="f-location" placeholder="e.g. Library, Room 201" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Status *</label>
+          <select id="f-status">
+            <option value="Lost">Lost</option>
+            <option value="Found">Found</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Contact (optional)</label>
+          <input type="text" id="f-contact" placeholder="e.g. Guard Office, 09XX..." />
+        </div>
+      </div>
+      <button class="btn-submit" id="submit-btn" onclick="submitItem()">Submit report</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
